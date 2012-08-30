@@ -4,7 +4,8 @@
         <meta charset="utf-8" />
         <title>Delivery Tracker</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+        @Styles.Render("~/Content/css")
+        @*<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />*@
         @Html.Partial("_SpaScripts")
     </head>
     <body>

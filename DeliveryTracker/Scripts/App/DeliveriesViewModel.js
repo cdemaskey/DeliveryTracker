@@ -11,8 +11,12 @@ function DeliveriesViewModel() {
     self.excludeDelivered = ko.observable(false);
 
     // Operations
-    self.saveAll = function () { self.dataSource.commitChanges() }
-    self.revertAll = function () { self.dataSource.revertChanges() }
+    self.saveAll = function () {
+        self.dataSource.commitChanges()
+    }
+    self.revertAll = function () {
+        self.dataSource.revertChanges()
+    }
 
     self.excludeDelivered.subscribe(function (shouldExcludeDelivered) {
         var filterRule = shouldExcludeDelivered ? { property: "IsDelivered", operation: "==", value: false }
