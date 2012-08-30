@@ -1,6 +1,5 @@
 @using DeliveryTracker.Controllers
-@using DeliveryTracker.Models
-@(Html.UpshotContext(bufferChanges: false).DataSource<DataServiceController>(x => x.GetDeliveriesForToday(), typeof(Delivery)))
+@(Html.UpshotContext(bufferChanges: false).DataSource<DataServiceController>(x => x.GetDeliveriesForToday()))
 
 <div data-bind="if: nav.params().view == 'deliveries'">
     @Html.Partial("_DeliveriesList")

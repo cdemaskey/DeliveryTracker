@@ -20,7 +20,7 @@ namespace DeliveryTracker.Models
             Database.SetInitializer(new TestDataInitializer());
         }
 
-        private class TestDataInitializer : DropCreateDatabaseAlways<AppDbContext> //DropCreateDatabaseIfModelChanges<AppDbContext>
+        private class TestDataInitializer : DropCreateDatabaseIfModelChanges<AppDbContext>
         {
             protected override void Seed(AppDbContext context)
             {

@@ -35,11 +35,6 @@ namespace DeliveryTracker
             );
         }
 
-        public static void RegiserBundles(BundleCollection bundles)
-        {
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
-        }
-
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -47,8 +42,7 @@ namespace DeliveryTracker
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            //BundleTable.Bundles.RegisterTemplateBundles();
-            RegiserBundles(BundleTable.Bundles);
+            BundleTable.Bundles.RegisterTemplateBundles();
         }
     }
 }

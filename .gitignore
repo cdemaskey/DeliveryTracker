@@ -11,11 +11,3 @@ obj/
 App_Data/
 packages/
 _ReSharper.*/
-
-#ncrunch
-*.ncrunchsolution
-
-/DeliveryTracker\_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT/Microsoft.VC90.CRT.manifest
-/DeliveryTracker\_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT/README_ENU.txt
-/DeliveryTracker\_bin_deployableAssemblies\x86\Microsoft.VC90.CRT/Microsoft.VC90.CRT.manifest
-/DeliveryTracker\_bin_deployableAssemblies\x86\Microsoft.VC90.CRT/README_ENU.txt

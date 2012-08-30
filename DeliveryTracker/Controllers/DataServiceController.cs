@@ -1,67 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Objects;
 using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using DeliveryTracker.Models;
-using UpshotHelper.Controllers;
-using UpshotHelper.Models;
+using System.Web.Http.Data.EntityFramework;
 
 namespace DeliveryTracker.Controllers
 {
-    public class DataServiceController : UpshotController 
+    public class DataServiceController : DbDataController<AppDbContext>
     {
-        private AppDbContext _dbContext;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DataServiceController" /> class.
-        /// </summary>
-        public DataServiceController()
-        {
-            _dbContext = new AppDbContext();
-        }
-
-        /// <summary>
-        /// Gets the deliveries for today.
-        /// </summary>
-        /// <returns>Returns the Deliveries for today.</returns>
         public IQueryable<Delivery> GetDeliveriesForToday()
         {
             // Could pre-filter by due date, delivery driver, etc...
-            return _dbContext.Deliveries.Include("Customer").OrderBy(x => x.DeliveryId);
+            return DbContext.Deliveries.Include("Customer").OrderBy(x => x.DeliveryId);
         }
 
-        /// <summary>
-        /// Processes the submit.
-        /// </summary>
-        /// <param name="changeSet">The change set.</param>
-        /// <returns>Returns True if successful, otherwise false.</returns>
-        protected override bool ProcessSubmit(ChangeSet changeSet)
-        {
-            bool success = true;
-
-			try
-			{
-				foreach (ChangeSetEntry entry in changeSet.ChangeSetEntries)
-				{
-					switch (entry.Operation)
-					{
-						case ChangeOperation.Update:
-							_dbContext.Entry(entry.Entity).State = EntityState.Modified;
-							break;
-					}
-				}
-
-				_dbContext.SaveChanges();
-			}
-			catch (Exception ex)
-			{
-				success = false;
-			}
-
-			return success;
-        }
+        // Put your custom access control logic in these methods
+        public void InsertDelivery(Delivery delivery) { InsertEntity(delivery); }
+        public void UpdateDelivery(Delivery delivery) { UpdateEntity(delivery); }
+        public void DeleteDelivery(Delivery delivery) { DeleteEntity(delivery); }
     }
 }
