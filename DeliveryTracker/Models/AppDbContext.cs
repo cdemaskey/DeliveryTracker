@@ -6,15 +6,12 @@ using System.Data.Entity;
 
 namespace DeliveryTracker.Models
 {
-    public partial class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
-    }
 
-    #region Test data
-    public partial class AppDbContext
-    {
+        #region Test data
         static AppDbContext()
         {
             Database.SetInitializer(new TestDataInitializer());
@@ -43,6 +40,6 @@ namespace DeliveryTracker.Models
 
             }
         }
+        #endregion
     }
-    #endregion
 }

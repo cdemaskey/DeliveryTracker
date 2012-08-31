@@ -100,18 +100,6 @@
     <Reference Include="System.Web.Http">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.Data">
-      <HintPath>..\packages\AspNetWebApi.Data.4.0.20221.15125\lib\net40\System.Web.Http.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.Data.EntityFramework">
-      <HintPath>..\packages\AspNetWebApi.Data.4.0.20221.15125\lib\net40\System.Web.Http.Data.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.Data.Helpers">
-      <HintPath>..\packages\AspNetWebApi.Data.4.0.20221.15125\lib\net40\System.Web.Http.Data.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.Data.Helpers2">
-      <HintPath>..\packages\AspNetWebApi.Data.4.0.20221.15125\lib\net40\System.Web.Http.Data.Helpers2.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
@@ -219,7 +207,9 @@
     <Content Include="Scripts\upshot.min.js">
       <DependentUpon>upshot.js</DependentUpon>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

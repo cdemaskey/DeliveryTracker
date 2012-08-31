@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Data.Objects;
 using System.Linq;
 using DeliveryTracker.Models;
@@ -46,15 +47,17 @@ namespace DeliveryTracker.Controllers
 			{
 				foreach (ChangeSetEntry entry in changeSet.ChangeSetEntries)
 				{
-					switch (entry.Operation)
-					{
-						case ChangeOperation.Update:
-							_dbContext.Entry(entry.Entity).State = EntityState.Modified;
-							break;
-					}
+                    switch (entry.Operation)
+                    {
+                        case ChangeOperation.Update:
+                            DbEntityEntry deliveryEntry = _dbContext.Entry(entry.Entity);
+
+                            deliveryEntry.State = EntityState.Modified;
+                            _dbContext.SaveChanges();
+                            break;
+                    }
 				}
 
-				_dbContext.SaveChanges();
 			}
 			catch (Exception ex)
 			{
