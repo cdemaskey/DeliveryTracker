@@ -52,6 +52,12 @@ namespace DeliveryTracker.Controllers
                         case ChangeOperation.Update:
                             DbEntityEntry deliveryEntry = _dbContext.Entry(entry.Entity);
 
+                            Customer customer = _dbContext.Customers.Local.FirstOrDefault(c => c.CustomerId == (deliveryEntry.Entity as Delivery).CustomerId);
+                            if (customer != null)
+                            {
+                                (deliveryEntry.Entity as Delivery).Customer = customer;
+                            }
+
                             deliveryEntry.State = EntityState.Modified;
                             _dbContext.SaveChanges();
                             break;
